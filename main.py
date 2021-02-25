@@ -1,5 +1,5 @@
 # Snake Game Project
-from turtle import Screen
+from turtle import Screen, Turtle
 from food import Food
 from snake import Snake
 from scoreboard import Scoreboard
@@ -9,9 +9,25 @@ import time
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
-screen.title("Classic Snake by Brother's Co.")
+screen.title("Classic Snake")
 screen.tracer(0)
 
+# Game Name
+tim = Turtle()
+tim.color("SpringGreen")
+tim.write("Classic Snake", align="center", font=("Engravers MT", 35, "normal"))
+tim.hideturtle()
+time.sleep(1.7)
+tim.clear()
+
+# Company Name
+tim.color("RoyalBlue2")
+tim.write("By Brother's Co.", align="center", font=("Algerian", 40, "normal"))
+tim.hideturtle()
+time.sleep(2)
+tim.clear()
+
+#Class Functions
 snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
@@ -22,6 +38,10 @@ screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
+
+tim = Turtle()
+tim.hideturtle()
+time.sleep(1)
 
 # GAME LOOP
 game_is_on = True
