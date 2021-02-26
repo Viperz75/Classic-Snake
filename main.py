@@ -5,12 +5,13 @@ from snake import Snake
 from scoreboard import Scoreboard
 import time
 
-# SCREEN SETUP
-screen = Screen()
-screen.setup(width=600, height=600)
-screen.bgcolor("black")
-screen.title("Classic Snake")
-screen.tracer(0)
+timmy = Turtle()
+win = Screen()
+win.setup(width=512, height=512)
+win.title('Classic Snake')
+win.bgcolor('black')
+timmy.hideturtle()
+
 
 # Game Name
 tim = Turtle()
@@ -27,17 +28,23 @@ tim.hideturtle()
 time.sleep(2)
 tim.clear()
 
+timmy.penup()
+timmy.hideturtle()
+win.bgpic('grass.gif')
+win.tracer(0)
+
+
 #Class Functions
 snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
 
 # KEYPRESS
-screen.listen()
-screen.onkey(snake.up, "Up")
-screen.onkey(snake.down, "Down")
-screen.onkey(snake.left, "Left")
-screen.onkey(snake.right, "Right")
+win.listen()
+win.onkey(snake.up, "Up")
+win.onkey(snake.down, "Down")
+win.onkey(snake.left, "Left")
+win.onkey(snake.right, "Right")
 
 tim = Turtle()
 tim.hideturtle()
@@ -46,7 +53,7 @@ time.sleep(1)
 # GAME LOOP
 game_is_on = True
 while game_is_on:
-    screen.update()
+    win.update()
     time.sleep(0.1)
     snake.move()
     #Detect Collision with Food
@@ -56,7 +63,7 @@ while game_is_on:
         scoreboard.increase_score()
 
     #Detect Collision with Wall
-    if snake.head.xcor() > 295 or snake.head.xcor() < -295 or snake.head.ycor() > 295 or snake.head.ycor() < -295:
+    if snake.head.xcor() > 240 or snake.head.xcor() < -240 or snake.head.ycor() > 240 or snake.head.ycor() < -240:
         game_is_on = False
         scoreboard.game_over()
 
@@ -69,4 +76,4 @@ while game_is_on:
             scoreboard.game_over()
 
 
-screen.exitonclick()
+win.exitonclick()
